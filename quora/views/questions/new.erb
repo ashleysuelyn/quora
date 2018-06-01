@@ -1,0 +1,11 @@
+<form action ="/questions" method="POST">
+	<input type="text" name="title">
+	<input type="submit">
+</form>
+
+<% id @error.present? %>
+<div>
+	<%= @error.error %>
+</div>
+
+<% end %>

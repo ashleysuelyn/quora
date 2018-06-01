@@ -1,0 +1,40 @@
+<!-- <div>
+	<h1>Question No<% @question.id %>: <%#= @question.title %></h1>
+
+	<a href="/questions/<%#= @question.id %>/answers/new">Create Answer</a> 
+</div>
+
+
+<div>
+<%# @answers.each do |x| %>
+	<div>
+		<p><%#= x.answers %></p>
+	</div>
+	<%# end %>
+</div> -->
+
+<%= @question.title %>
+<%= @question.description %><br>
+
+<% @question.answers.each do |a| %>
+	<%= a.answers %>
+	<form method = "post" action = "/questions/<%= @question.id %>/answer/<%= a.id %>">
+	<input type ="hidden" name="_method" value ="delete">
+	<input type ="submit" value="delete">
+</form>
+<% end %>
+
+<!-- <a href="/questions/<%= @question.id %>/answers/new">Answer</a> -->
+
+<h1> New Answer </h1>
+
+
+<form action ="/questions/<%= @question.id %>/answers" method ="POST">
+	<input type ="text" name ="answers">
+	<input type ="submit" name ="create answer">
+</form>
+
+<form method = "post" action = "/questions/<%= @question.id %>">
+	<input type ="hidden" name="_method" value ="delete">
+	<input type ="submit" value="delete">
+</form>
